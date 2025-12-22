@@ -39,8 +39,11 @@ const Login: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="w-full bg-blue-600 text-white py-2 rounded">
+        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
           Login
+        </button>
+        <button type="button" onClick={() => navigate('/signup')} className="w-full bg-green-600 text-white py-2 mt-2 rounded">
+          Sign Up
         </button>
       </form>
     </div>
