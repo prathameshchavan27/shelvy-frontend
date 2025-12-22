@@ -37,8 +37,11 @@ export default function Signup() {
           />
         ))}
 
-        <button className="w-full bg-green-600 text-white py-2 rounded">
+        <button type="submit" className="w-full bg-green-600 text-white py-2 rounded">
           Signup
+        </button>
+        <button type="button" onClick={() => navigate('/login')} className="w-full bg-blue-600 text-white py-2 mt-2 rounded">
+          Login
         </button>
       </form>
     </div>

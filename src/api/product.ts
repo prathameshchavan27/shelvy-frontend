@@ -7,6 +7,11 @@ export const getProducts = async () => {
 };
 
 export const getProductById = async (id: number) => {
-  const response = await api.get(`/products/${id}`);
+  const response = await api.get(`/products/${id}.json`);
+  return response.data;
+}
+
+export const createProduct = async (productData: { name: string; sku: string; description?: string; price: number; }) => {
+  const response = await api.post("/products", { product: productData });
   return response.data;
 }

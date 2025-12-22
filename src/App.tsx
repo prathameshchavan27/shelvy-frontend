@@ -7,6 +7,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import InventoryPage from "./pages/InventoryPage";
 import ProductPage from "./pages/ProductPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import InventoryDetailsPage from "./pages/InventoryDetailsPage";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,16 @@ const App: React.FC = () => {
           <PrivateRoute>
             <DashboardLayout title="Inventory">
               <InventoryPage />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/inventory/:id"
+        element={
+          <PrivateRoute>
+            <DashboardLayout title="Inventory Details">
+              <InventoryDetailsPage />
             </DashboardLayout>
           </PrivateRoute>
         }

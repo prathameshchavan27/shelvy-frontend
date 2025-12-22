@@ -3,6 +3,7 @@ import { useWarehouse } from '../context/WarehouseContext'
 import { getInventoryLocationsByWarehouse } from '../api/inventory';
 import LocationList from '../components/LocationList';
 import List, { ListItem } from '../components/List';
+import { useNavigate } from 'react-router-dom';
 
 interface Location {
     id: number;
@@ -15,6 +16,7 @@ const InventoryPage: React.FC = () => {
     const { warehouseId } = useWarehouse();
     console.log("Selected Warehouse ID:", warehouseId);
     const [locations, setLocations] = useState<Location[]>([]);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchLocations = async () => {
             const res = await getInventoryLocationsByWarehouse(warehouseId);
@@ -26,10 +28,7 @@ const InventoryPage: React.FC = () => {
       const handleViewItem = (item: ListItem) => {
         // Cast the generic ListItem back to the specific Location interface
         const location = item as Location; 
-        
-        console.log(`Viewing Location ID: ${location.id}, Storage ID: ${location.storage_id}`);
-        // NOTE: Avoid using alert() in final apps. Using it here to match previous behavior.
-        alert(`Navigating to details for Location ID: ${location.id}, Storage ID: ${location.storage_id}`);
+        navigate(`/inventory/${location.id}`);
     };
   return (
       <div>

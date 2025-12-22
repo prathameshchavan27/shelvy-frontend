@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Layers } from "lucide-react";
+import { Box, Layers, LogOutIcon } from "lucide-react";
 import { ShelvyLogo } from "../assets/ShelvyLogo";
+import { api } from "../api/client";
 
 interface MenuItem {
   label: string;
@@ -24,6 +25,18 @@ export const Sidebar: React.FC = () => {
       to: "/",
     },
   ];
+  const logout = async() => {
+    try {
+      const res = await api.delete('logout');
+      if (res.status === 200) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+
+  }
 
   return (
     <aside
@@ -48,6 +61,16 @@ export const Sidebar: React.FC = () => {
             </Link>
             ))}
         </nav>
+        <div className="absolute bottom-12 flex flex-col gap-2 p-2 mt-4">
+             <button
+                onClick={logout}
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-100 transition text-gray-800"
+            >
+                <LogOutIcon className="w-6 h-6 text-blue-700" />
+                {expanded && <span className="text-lg">Logout</span>}
+            </button>
+        </div>
+        <span className="absolute bottom-4 left-4 text-xs text-gray-400">v1.0.0</span>
     </aside>
   );
 };
