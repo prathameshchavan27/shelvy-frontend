@@ -107,6 +107,10 @@ The app uses JWT tokens stored in localStorage. The auth flow includes:
 - Automatic redirect to login on 401 responses
 - Role-based UI rendering for staff vs admin users
 
+## 🔗 Related Repositories
+This project is part of the Shelvy Warehouse Ecosystem:
+*   [Shelvy Backend](https://github.com/prathameshchavan27/shelvy-backend) - Core API and Database logic.
+
 ## License
 
 MIT
