@@ -24,6 +24,6 @@ export const login = async ({
 
   return {
     token,
-    user: res.data.data,
+    role: res.data.data["role"],
   };
 };
