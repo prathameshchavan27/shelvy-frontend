@@ -5,6 +5,8 @@ interface Movement {
   transfer_to: string;
   transfer_from: string;
   created_at: string;
+  bundle?: object;
+  description?: string;
 }
 
 interface HistoryItem {
@@ -50,10 +52,13 @@ const InventoryMovementList: React.FC<ListProps> = ({ products }) => {
                       {qtyChange > 0 ? `+${qtyChange}` : qtyChange}
                     </p>
                     <p className="text-sm text-gray-500">
-                      {product.location === m.transfer_from && (
+                      {(m.bundle && m.transfer_from==null) && (<span className="italic font-medium font-bold text-blue-600 ">bundle</span>)}
+                      {(m.bundle && m.transfer_from!=null) &&(<span className="italic font-medium font-bold text-blue-600 ">Unbundle</span>)}
+                      {(m.description && m.transfer_from==null) && (<span className="font-medium font-bold text-blue-600 ">{m.description}</span>)}
+                      {(product.location === m.transfer_from && (m.bundle==null && m.description==null)) && (
                         <>transfered to <span className="font-medium font-bold text-black">{m.transfer_to}</span></>
                       )}
-                      {product.location === m.transfer_to && (
+                      {(product.location === m.transfer_to && (m.bundle==null && m.description==null)) && (
                         <>transfered from <span className="font-medium">{m.transfer_from}</span></>
                       )}
                     </p>

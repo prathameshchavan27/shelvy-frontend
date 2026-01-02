@@ -13,9 +13,9 @@ const Login: React.FC = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const { token, user } = await login({ email, password });
-
-    setAuth(token, user);
+    const { token, role } = await login({ email, password });
+    console.log(token+" "+role)
+    setAuth(token, role);
     navigate("/");
   }
 

@@ -7,6 +7,7 @@ import AddProductFeature from '../components/AddProductModal';
 const ProductPage = () => {
     const [products, setProducts] = React.useState([]);
     const navigate = useNavigate();
+    const role = localStorage.getItem("role");
     useEffect(() => {
         const fetchProducts = async () => {
             const data = await getProducts();
@@ -17,7 +18,7 @@ const ProductPage = () => {
     }, []);
   return (
     <div className="w-full bg-white my-2 shadow-sm p-4 ">
-      <AddProductFeature />
+      {role!='staff' && <AddProductFeature />}
       <List
           items={products}
           onView={(item) => navigate(`/products/${item.id}`)}

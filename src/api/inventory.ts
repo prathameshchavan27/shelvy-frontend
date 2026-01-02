@@ -1,3 +1,4 @@
+import { UnbundlePayload } from "../pages/BundlesPage";
 import { api } from "./client";
 
 export const getInventoryLocationsByWarehouse = async (warehouseId: number) => {
@@ -36,6 +37,19 @@ export const transferInventory = async (fromLocationId: number, toLocationId: nu
       destination_location_id: toLocationId,
       items: payload,
     },
+  });
+  return response.data;
+}
+
+export const unbundleInventory = async (unbundleData: UnbundlePayload) => {
+  const response = await api.post(`/unbundles/unbundle`, { unbundle: unbundleData});
+  return response.data;
+}
+
+export const getAvailableCapacity = async (warehouseId: number) => {
+  console.log("Fetching available capacity for warehouse ID:", warehouseId);
+  const response = await api.get(`/inventory_locations/available_capacity`, {
+    params: { warehouse_id: warehouseId },
   });
   return response.data;
 }

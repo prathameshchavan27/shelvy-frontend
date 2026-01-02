@@ -8,6 +8,8 @@ import InventoryPage from "./pages/InventoryPage";
 import ProductPage from "./pages/ProductPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import InventoryDetailsPage from "./pages/InventoryDetailsPage";
+import BundlePage from "./pages/BundlesPage";
+import ReceivingPage from "./pages/ReceivingPage";
 
 const App: React.FC = () => {
   return (
@@ -52,6 +54,26 @@ const App: React.FC = () => {
           <PrivateRoute>
             <DashboardLayout title="Product Details">
               <ProductDetailsPage />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/bundles"
+        element={
+          <PrivateRoute>
+            <DashboardLayout title="Bundles">
+              <BundlePage />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/receiving"
+        element={
+          <PrivateRoute>
+            <DashboardLayout title="Receiving">
+              <ReceivingPage />
             </DashboardLayout>
           </PrivateRoute>
         }

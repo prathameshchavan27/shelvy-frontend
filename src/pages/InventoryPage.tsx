@@ -38,7 +38,7 @@ const InventoryPage: React.FC = () => {
                   items={locations as ListItem[]}
                     onView={handleViewItem}
                     getTitle={(item) => `${(item as Location).storage_id}`}
-                    getDetails={(item) => `${(item as Location).product_count} | ${(item as Location).total_quantity}`}
+                    getDetails={(item) => `${(item as Location).product_count} | ${(item as Location).total_quantity || 0}`}
                     columnHeadings={{
                         title: "Storage ID",
                         details: "Product | Units",

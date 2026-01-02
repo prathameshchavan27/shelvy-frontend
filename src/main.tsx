@@ -8,7 +8,7 @@ import { WarehouseProvider } from './context/WarehouseContext'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-    <WarehouseProvider>
+      <WarehouseProvider>
         <App />
       </WarehouseProvider>
     </BrowserRouter>

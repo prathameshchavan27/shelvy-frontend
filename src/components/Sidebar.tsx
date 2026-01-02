@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Layers, LogOutIcon } from "lucide-react";
+import { Box, Layers, LogOutIcon, Package, Package2, ShoppingCartIcon } from "lucide-react";
 import { ShelvyLogo } from "../assets/ShelvyLogo";
 import { api } from "../api/client";
 
@@ -24,6 +24,16 @@ export const Sidebar: React.FC = () => {
       icon: <Layers className="w-6 h-6 text-blue-700" />,
       to: "/",
     },
+    {
+      label: "Bundles",
+      icon: <Package2 className="w-6 h-6 text-blue-700" />,
+      to: "/bundles",
+    },
+    {
+      label: "Receiving",
+      icon: <ShoppingCartIcon className="w-6 h-6 text-blue-700" />,
+      to: "/receiving",
+    }
   ];
   const logout = async() => {
     try {
